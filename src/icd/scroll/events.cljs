@@ -8,12 +8,7 @@
                        (fn [_db _args]
                          db/default-db))
 
-(re-frame/reg-event-db ::change-name
-                       (fn [db [_ name]]
-                         (assoc db :name name)))
-
 (re-frame/reg-event-db ::select-letter
-                       (fn [db [_ title content]]
+                       (fn [db [_ letter]]
                          (assoc db
-                                ::letters/selected-id title
-                                ::letters/selected-content content)))
+                                ::letters/selected-letter letter)))

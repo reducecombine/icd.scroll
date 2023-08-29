@@ -2,14 +2,31 @@
   (:require
    [clojure.spec.alpha :as spec]))
 
-(spec/def ::selected-id string?
-  #_"The currently selected letter.")
+(spec/def ::id int?)
 
-(spec/def ::stack (spec/coll-of ::selected-id)
+(spec/def ::title string?)
+
+(spec/def ::content string?)
+
+(spec/def ::stack (spec/coll-of ::id :kind vector?)
   #_"A stack of letter ids.")
 
+(spec/def ::top-distance integer?
+  #_"The distance in px from the top of the viewport to the top of the element.")
+
+(spec/def ::letter (spec/keys :req [::id
+                                    ::title
+                                    ::content])
+  #_"A medical letter")
+
+(spec/def ::selected-letter ::letter
+  #_"The currently selected letter.")
+
+(spec/def ::scroll-positions (spec/map-of ::id ::top-distance))
+
 (def letter1
-  {::title "letter1"
+  {::id 1
+   ::title "letter1"
    ::content
    [:p
     [:span "Ref: 294-8392-ND "]
@@ -117,7 +134,8 @@
     [:span "CC: Patient Medical Record - Sarah Williams"]]})
 
 (def letter2
-  {::title "letter2"
+  {::id 2
+   ::title "letter2"
    ::content
    [:p
     [:span "Ref: 672-1840-JK "]
@@ -221,7 +239,8 @@
     [:span "CC: Patient Medical Record - Brian Johnson"]]})
 
 (def letter3
-  {::title "letter3"
+  {::id 3
+   ::title "letter3"
    ::content
    [:p
     [:span "Ref: 810-2735-QW "]
@@ -327,7 +346,8 @@
     [:span "CC: Patient Medical Record - Mark Thompson"]]})
 
 (def letter4
-  {::title "letter4"
+  {::id 4
+   ::title "letter4"
    ::content
    [:p
     [:span "Ref: 345-6789-AB "]

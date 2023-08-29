@@ -2,6 +2,7 @@
   (:require
    [icd.scroll.config :as config]
    [icd.scroll.events :as events]
+   [icd.scroll.subs]
    [icd.scroll.views :as views]
    [re-frame.core :as re-frame]
    [reagent.dom :as rdom]))

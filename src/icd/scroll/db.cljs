@@ -2,6 +2,6 @@
   (:require [icd.scroll.letters :as letters]))
 
 (def default-db
-  {::letters/selected-id      (-> letters/all first ::letters/title)
-   ::letters/selected-content (-> letters/all first ::letters/content)
+  {::letters/selected-letter  (first letters/all)
+   ::letters/scroll-positions {}
    ::letters/stack            []})

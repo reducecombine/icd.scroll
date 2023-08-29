@@ -1,0 +1,29 @@
+{:source-paths ["src" "test"]
+
+ :dependencies [[bidi "2.1.5"]
+                [binaryage/devtools "1.0.6"]
+                [cider/cider-nrepl "0.37.0"]
+                [cljs-ajax "0.7.3"]
+                [day8.re-frame/http-fx "v0.2.0"]
+                [kibu/pushy "0.3.8"]
+                [re-com "2.13.2"]
+                [re-frame "1.3.0"]
+                [reagent "1.1.1"]
+                [refactor-nrepl/refactor-nrepl "3.9.0"]]
+
+ :middleware [cider.nrepl/cider-middleware
+              refactor-nrepl.middleware/wrap-refactor]
+
+ :fs-watch {:hawk false}
+
+ :nrepl {:port 3333}
+
+ :builds {:app {:target     :browser
+                :output-dir "resources/public/js/compiled"
+                :asset-path "/js/compiled"
+                :modules    {:app {:init-fn icd.scroll.app/init}}
+                :devtools   {:preloads []
+                             :http-root   "resources/public"
+                             :http-port   3000}
+                :dev        {:compiler-options {:closure-defines {re-com.config/root-url-for-compiler-output
+                                                                  "http://localhost:8290/js/compiled/app/cljs-runtime/"}}}}} }

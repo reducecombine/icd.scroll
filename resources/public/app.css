@@ -1,0 +1,12 @@
+.letter-window {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.letter-selector:hover {
+  cursor: default
+}
+
+.letter-selector.selected {
+  font-weight: bold
+}

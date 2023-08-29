@@ -1,4 +1,7 @@
-(ns icd.scroll.db)
+(ns icd.scroll.db
+  (:require [icd.scroll.letters :as letters]))
 
 (def default-db
-  {:name "re-frame"})
+  {::letters/selected-id      (-> letters/all first ::letters/title)
+   ::letters/selected-content (-> letters/all first ::letters/content)
+   ::letters/stack            []})

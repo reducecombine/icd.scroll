@@ -1,6 +1,7 @@
 (ns icd.scroll.letters
   (:require
-   [clojure.spec.alpha :as spec]))
+   [clojure.spec.alpha :as spec]
+   [re-frame.core :as re-frame]))
 
 (spec/def ::id int?)
 
@@ -23,6 +24,13 @@
   #_"The currently selected letter.")
 
 (spec/def ::scroll-positions (spec/map-of ::id ::top-distance))
+
+(re-frame/reg-sub ::selected-letter ::selected-letter)
+
+(re-frame/reg-sub ::stack ::stack)
+
+(re-frame/reg-sub ::empty-stack? (fn [db]
+                                   (-> db ::stack count (< 2))))
 
 (def letter1
   {::id 1

@@ -27,6 +27,8 @@
 
 (re-frame/reg-sub ::selected-letter ::selected-letter)
 
+(re-frame/reg-sub ::scroll-positions ::scroll-positions)
+
 (re-frame/reg-sub ::stack ::stack)
 
 (re-frame/reg-sub ::empty-stack? (fn [db]

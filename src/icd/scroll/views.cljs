@@ -31,9 +31,12 @@
                 letters/all))))
 
 (defn current-letter []
-  (let [selected (subscribe [::letters/selected-letter])]
-    [:div.letter-window
-     (::letters/content @selected)]))
+  (let [{:keys [::letters/id ::letters/content] :as selected} @(subscribe [::letters/selected-letter])]
+    (dispatch [::events/reconcile-scroll-position-in-dom! id])
+    [:div.letter-window {:data-letter-id (str id)
+                         :on-scroll (fn [e]
+                                      (dispatch [::events/update-scroll-position-in-db id (-> e .-target .-scrollTop)]))}
+     content]))
 
 (defn main-panel []
   [re-com/v-box

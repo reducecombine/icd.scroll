@@ -1,5 +1,4 @@
-{:lint-as {logjam.repl-test/with-each-framework    clojure.core/let
-           clojure.test.check.clojure-test/defspec clojure.test/deftest
+{:lint-as {clojure.test.check.clojure-test/defspec clojure.test/deftest
            clojure.test.check.properties/for-all   clojure.core/let}
  :linters {:discouraged-var                       {clojure.core/read-string {:message "Please prefer clojure.edn/read-string"}
                                                    cljs.core/for            {:message "Laziness can cause rendering issues"}

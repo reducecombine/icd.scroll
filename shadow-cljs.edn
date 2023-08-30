@@ -25,7 +25,7 @@
                 :output-dir "resources/public/js/compiled"
                 :asset-path "/js/compiled"
                 :modules    {:app {:init-fn icd.scroll.app/init}}
-                :devtools   {:preloads []
+                :devtools   {:preloads [icd.scroll.events-test]
                              :http-root   "resources/public"
                              :http-port   3000}
                 :dev        {:compiler-options {:closure-defines {re-com.config/root-url-for-compiler-output

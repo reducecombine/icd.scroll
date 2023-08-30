@@ -6,16 +6,12 @@
    [re-frame.core :as re-frame :refer [dispatch subscribe]]))
 
 (defn title []
-  [re-com/title :src (at)
+  [re-com/title
+   :src (at)
+   :class "app-title"
    :label "Letter viewer"
-   :level :level1])
-
-(defn controls []
-  (let [empty-stack? (subscribe [::letters/empty-stack?])]
-    [:button {:disabled @empty-stack?
-              :on-click (fn [_]
-                          (dispatch [::events/back]))}
-     "Back"]))
+   :level :level2
+   :parts {:wrapper {:style {:align-items "center"}}}])
 
 (defn selector []
   (let [selected (subscribe [::letters/selected-letter])]
@@ -30,19 +26,37 @@
                                     title]]))
                 letters/all))))
 
+(defn controls []
+  (let [empty-stack? (subscribe [::letters/empty-stack?])]
+    [re-com/h-box
+     :src      (at)
+     :padding "0 40px 20px"
+     :children [[selector]
+                [:div {:style {:flex-grow "1"}}]
+                (when-not @empty-stack?
+                  [:button {:style {:border "solid 1px #e8e8e8"
+                                    :height "23px"}
+                            :on-click (fn [_]
+                                        (dispatch [::events/back]))}
+                   "Back"])]]))
+
 (defn current-letter []
-  (let [{:keys [::letters/id ::letters/content] :as selected} @(subscribe [::letters/selected-letter])]
+  (let [{:keys [::letters/id ::letters/content ::letters/title]} @(subscribe [::letters/selected-letter])]
     (dispatch [::events/reconcile-scroll-position-in-dom! id])
-    [:div.letter-window {:data-letter-id (str id)
-                         :on-scroll (fn [e]
-                                      (dispatch [::events/update-scroll-position-in-db id (-> e .-target .-scrollTop)]))}
-     content]))
+    [re-com/v-box :children [[re-com/title
+                              :src (at)
+                              :label title
+                              :level :level2
+                              :parts {:wrapper {:class "letter-title"}}]
+                             [:div.letter-window {:data-letter-id (str id)
+                                                  :on-scroll (fn [e]
+                                                               (dispatch [::events/update-scroll-position-in-db id (-> e .-target .-scrollTop)]))}
+                              [:div content]]]]))
 
 (defn main-panel []
   [re-com/v-box
    :src      (at)
-   :height   "100%"
    :children [[title]
+              [re-com/gap :size "30px"]
               [controls]
-              [selector]
               [current-letter]]])

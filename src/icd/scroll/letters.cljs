@@ -36,7 +36,7 @@
 
 (def letter1
   {::id 1
-   ::title "letter1"
+   ::title "Medical Evaluation and Diagnostic Summary for Sarah Williams"
    ::content
    [:p
     [:span "Ref: 294-8392-ND "]
@@ -145,7 +145,7 @@
 
 (def letter2
   {::id 2
-   ::title "letter2"
+   ::title "Medical Evaluation and Diagnostic Summary for Brian Johnson"
    ::content
    [:p
     [:span "Ref: 672-1840-JK "]
@@ -250,7 +250,7 @@
 
 (def letter3
   {::id 3
-   ::title "letter3"
+   ::title "Medical Evaluation and Diagnostic Summary for Mark Thompson"
    ::content
    [:p
     [:span "Ref: 810-2735-QW "]
@@ -357,7 +357,7 @@
 
 (def letter4
   {::id 4
-   ::title "letter4"
+   ::title "Medical Evaluation and Diagnostic Summary for Emily Davis"
    ::content
    [:p
     [:span "Ref: 345-6789-AB "]

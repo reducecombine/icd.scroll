@@ -2,7 +2,7 @@
   (:require
    [icd.scroll.db :as db]
    [icd.scroll.letters :as letters]
-   [re-frame.core :refer [dispatch reg-event-db]]))
+   [re-frame.core :refer [reg-event-db]]))
 
 (reg-event-db ::initialize-db
               (fn [_db _args]

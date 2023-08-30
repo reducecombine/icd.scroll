@@ -1,6 +1,23 @@
+body {
+  background-color: #eaeaea;
+}
+
+#app {
+  background-color: white;
+  margin: 16px 30px;
+  height: 100%
+}
+
+.letter-title {
+  padding: 0 50px;
+}
+
 .letter-window {
-  max-height: 200px;
+  margin: 0 40px;
+  max-height: 400px;
   overflow: scroll;
+  border: solid 1px #eaeaea;
+  padding: 10px 20px;
 }
 
 .letter-selector:hover {
@@ -9,4 +26,16 @@
 
 .letter-selector.selected {
   font-weight: bold
+}
+
+.a {
+  color: #438dcc
+}
+
+.app-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #535353
 }

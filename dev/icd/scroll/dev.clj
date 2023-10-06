@@ -20,6 +20,7 @@
 (defn format!
   {:shadow.build/stage :compile-prepare}
   [state]
-  (formatting-stack.project-formatter/format-and-lint-project! :in-background? false)
+  ;; Disabled for now:
+  #_(formatting-stack.project-formatter/format-and-lint-project! :in-background? false)
   ;; must be returned:
   state)

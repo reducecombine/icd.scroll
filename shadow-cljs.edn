@@ -2,7 +2,7 @@
 
  :dependencies [[bidi "2.1.5"]
                 [binaryage/devtools "1.0.6"]
-                [cider/cider-nrepl "0.39.0"]
+                [cider/cider-nrepl "0.43.3"]
                 [com.stuartsierra/component "1.1.0"]
                 [cljs-ajax "0.7.3"]
                 [day8.re-frame/http-fx "v0.2.0"]

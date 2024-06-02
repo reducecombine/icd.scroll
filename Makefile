@@ -8,9 +8,13 @@ clean:
 	npm install --no-fund --no-audit --no-progress --loglevel=error
 	touch $@
 
-run: clean .make_npm kondo
+run: clean .make_npm
 	open "http://localhost:3000"
 	npm run shadow-cljs watch app
+
+repl: clean .make_npm
+	open "http://localhost:3000"
+	npm run shadow-cljs cljs-repl app
 
 .make_kondo_prep: deps.edn
 	clojure -M:kondo --lint $$(clojure -Spath) --dependencies --parallel --copy-configs > $@
